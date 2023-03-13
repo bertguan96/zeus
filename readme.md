@@ -1,1 +1,1 @@
-# Vue+Springboot实现运行日志实时推送展示[2023]
+# 基于Vue+Springboot日志监控组件[2023]
