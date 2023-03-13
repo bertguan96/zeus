@@ -1,9 +1,11 @@
-package org.example.service;
+package org.logger.websocket;
 
 import com.alibaba.fastjson2.JSON;
 import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
+import org.logger.entity.LoggerMessage;
+import org.logger.entity.LoggerQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -15,12 +17,12 @@ import java.util.concurrent.Executors;
 
 @ServerEndpoint("/websocket/{sid}")
 @Component
-public class WebSocketServer {
-    static Logger log = LoggerFactory.getLogger(WebSocketServer.class);
+public class WebSocketService {
+    static Logger log = LoggerFactory.getLogger(WebSocketService.class);
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;
     //concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
-    private static CopyOnWriteArraySet<WebSocketServer> webSocketSet = new CopyOnWriteArraySet<WebSocketServer>();
+    private static CopyOnWriteArraySet<WebSocketService> webSocketSet = new CopyOnWriteArraySet<WebSocketService>();
 
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
@@ -61,7 +63,7 @@ public class WebSocketServer {
     @OnMessage
     public void onMessage(String message, Session session) {
         //群发消息
-        for (WebSocketServer item : webSocketSet) {
+        for (WebSocketService item : webSocketSet) {
             try {
                 item.sendMessage(message);
             } catch (IOException e) {
@@ -91,7 +93,7 @@ public class WebSocketServer {
      * 群发自定义消息
      */
     public static void sendInfo(String message, @PathParam("sid") String sid) throws Exception {
-        for (WebSocketServer item : webSocketSet) {
+        for (WebSocketService item : webSocketSet) {
             try {
                 //这里可以设定只推送给这个sid的，为null则全部推送
                 if (sid == null) {
@@ -128,10 +130,10 @@ public class WebSocketServer {
     }
 
     public static synchronized void addOnlineCount() {
-        WebSocketServer.onlineCount++;
+        WebSocketService.onlineCount++;
     }
 
     public static synchronized void subOnlineCount() {
-        WebSocketServer.onlineCount--;
+        WebSocketService.onlineCount--;
     }
 }
