@@ -1,4 +1,4 @@
-package org.example.service;
+package org.logger.entity;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;

@@ -1,10 +1,11 @@
-package org.example.service;
+package org.logger.configuration;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.classic.spi.IThrowableProxy;
 import ch.qos.logback.core.filter.Filter;
 import ch.qos.logback.core.spi.FilterReply;
-import com.alibaba.fastjson2.JSON;
+import org.logger.entity.LoggerMessage;
+import org.logger.entity.LoggerQueue;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;

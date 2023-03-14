@@ -1,4 +1,4 @@
-package org.example.service;
+package org.logger.entity;
 
 public class LoggerMessage {
     private String body;
