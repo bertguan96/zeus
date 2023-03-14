@@ -15,10 +15,8 @@ public class StorageContext<T> {
 
     @Autowired
     public StorageContext(StorageStrategy<T> mongoDbStorageStrategy,
-                          StorageStrategy<T> esStorageStrategy,
-                          @Qualifier("defaultStorageStrategy") StorageStrategy<T> defaultStorageStrategy) {
-        storageStrategy = mongoDbStorageStrategy != null ? mongoDbStorageStrategy :
-                esStorageStrategy != null ? esStorageStrategy : defaultStorageStrategy;
+                          StorageStrategy<T> esStorageStrategy) {
+        storageStrategy = mongoDbStorageStrategy != null ? mongoDbStorageStrategy : esStorageStrategy;
         if (storageStrategy == null) {
             throw new IllegalArgumentException("At least one storage strategy must not be null.");
         }
