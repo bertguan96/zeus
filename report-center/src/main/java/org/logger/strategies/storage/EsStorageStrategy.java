@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author TBH anglebanghua@gmail.com
  * Date: [2023/3/14 4:53]
@@ -15,7 +17,15 @@ import org.springframework.stereotype.Component;
 @ConditionalOnEsStorage
 @Qualifier("esStorageStrategy")
 public class EsStorageStrategy<T> implements StorageStrategy<T> {
+    /**
+     * 批量添加
+     *
+     * @param dataList 数据列表
+     */
+    @Override
+    public void saveMany(List<T> dataList) {
 
+    }
 
     /**
      * 新增数据

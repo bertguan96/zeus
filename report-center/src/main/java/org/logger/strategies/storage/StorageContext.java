@@ -1,8 +1,9 @@
 package org.logger.strategies.storage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author TBH anglebanghua@gmail.com
@@ -20,6 +21,15 @@ public class StorageContext<T> {
         if (storageStrategy == null) {
             throw new IllegalArgumentException("At least one storage strategy must not be null.");
         }
+    }
+
+    /**
+     * 批量添加
+     *
+     * @param dataList 数据列表
+     */
+    public void saveMany(List<T> dataList) {
+        storageStrategy.saveMany(dataList);
     }
 
     /**

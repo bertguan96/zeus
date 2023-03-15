@@ -1,12 +1,23 @@
 package org.logger.entity;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document("logger")
 public class LoggerMessage {
+    @Field
     private String body;
+    @Field
     private String timestamp;
+    @Field
     private String threadName;
+    @Field
     private String className;
+    @Field
     private String level;
+    @Field
     private String exception;
+    @Field
     private String cause;
 
     public LoggerMessage(String body, String timestamp, String threadName, String className, String level, String exception, String cause) {
@@ -73,5 +84,18 @@ public class LoggerMessage {
 
     public void setCause(String cause) {
         this.cause = cause;
+    }
+
+    @Override
+    public String toString() {
+        return "LoggerMessage{" +
+                "body='" + body + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", threadName='" + threadName + '\'' +
+                ", className='" + className + '\'' +
+                ", level='" + level + '\'' +
+                ", exception='" + exception + '\'' +
+                ", cause='" + cause + '\'' +
+                '}';
     }
 }

@@ -1,11 +1,20 @@
 package org.logger.strategies.storage;
 
+import java.util.List;
+
 /**
  * @author TBH anglebanghua@gmail.com
  * Date: [2023/3/14 4:54]
  * Description: Storage Strategy
  */
-public interface StorageStrategy<T>{
+public interface StorageStrategy<T> {
+    /**
+     * 批量添加
+     *
+     * @param dataList 数据列表
+     */
+    void saveMany(List<T> dataList);
+
     /**
      * 新增数据
      *

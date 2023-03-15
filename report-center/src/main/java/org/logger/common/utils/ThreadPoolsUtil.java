@@ -41,7 +41,7 @@ public class ThreadPoolsUtil {
 
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(poolSizeDealt, maxPoolSizeDealt,
                 1L, TimeUnit.SECONDS,
-                new SynchronousQueue<>(),
+                new LinkedBlockingDeque<>(5000),
                 new ThreadPoolExecutor.CallerRunsPolicy());
 
         threadPoolExecutor.allowCoreThreadTimeOut(true);

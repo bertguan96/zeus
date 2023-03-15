@@ -1,9 +1,13 @@
 package org.logger.strategies.storage;
 
+import org.logger.service.MongoService;
 import org.logger.strategies.anno.ConditionalOnMongoDbStorage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @author TBH anglebanghua@gmail.com
@@ -15,6 +19,23 @@ import org.springframework.stereotype.Component;
 @ConditionalOnMongoDbStorage
 @Qualifier("mongoDbStorageStrategy")
 public class MongoDbStorageStrategy<T> implements StorageStrategy<T> {
+    private final MongoService mongoService;
+
+    @Autowired
+    public MongoDbStorageStrategy(MongoService mongoService) {
+        this.mongoService = mongoService;
+    }
+
+    /**
+     * 批量添加
+     *
+     * @param dataList 数据列表
+     */
+    @Override
+    public void saveMany(List<T> dataList) {
+        mongoService.saveBatch(dataList);
+    }
+
     /**
      * 新增数据
      *
@@ -22,7 +43,6 @@ public class MongoDbStorageStrategy<T> implements StorageStrategy<T> {
      */
     @Override
     public void create(T object) {
-        System.out.println("================>mongo create");
     }
 
     /**
