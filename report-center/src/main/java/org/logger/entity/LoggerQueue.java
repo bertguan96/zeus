@@ -33,7 +33,7 @@ public class LoggerQueue {
 
     /**
      * @Description: 消息出队
-     * @Return: com.unismc.springbootudcap.powersecurity.entity.LoggerMessage
+     * @Return: com.unismc.springbootudcap.powersecurity.entity.EsLoggerMessageDocument
      * @Author: leijun
      * @Date: 2019/11/26
      **/

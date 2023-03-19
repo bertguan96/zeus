@@ -1,22 +1,31 @@
-package org.logger.entity;
+package org.logger.document.mongo;
 
-public class LoggerMessage {
+import org.logger.document.LoggerMessageDocument;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+@Document("logger")
+public class MongoLoggerMessageDocument extends LoggerMessageDocument {
+    @Field
     private String body;
-
+    @Field
     private String timestamp;
-
+    @Field
     private String threadName;
-
+    @Field
     private String className;
-
+    @Field
     private String level;
-
+    @Field
     private String exception;
-
+    @Field
     private String cause;
 
-    public LoggerMessage(String body, String timestamp, String threadName, String className, String level, String exception, String cause) {
+    public MongoLoggerMessageDocument() {
+    }
+
+    public MongoLoggerMessageDocument(String body, String timestamp, String threadName, String className,
+                                      String level, String exception, String cause) {
         this.body = body;
         this.timestamp = timestamp;
         this.threadName = threadName;

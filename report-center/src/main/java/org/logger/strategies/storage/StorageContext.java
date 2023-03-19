@@ -3,7 +3,7 @@ package org.logger.strategies.storage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * @author TBH anglebanghua@gmail.com
@@ -28,61 +28,8 @@ public class StorageContext<T> {
      *
      * @param dataList 数据列表
      */
-    public void saveMany(List<T> dataList) {
+    public void saveMany(Collection<T> dataList) {
         storageStrategy.saveMany(dataList);
     }
-
-    /**
-     * 新增数据
-     *
-     * @param object 数据对象
-     */
-
-    public void create(T object) {
-        storageStrategy.create(object);
-    }
-
-    /**
-     * 查询数据
-     *
-     * @param id 主键信息
-     * @return 查询返回
-     */
-
-    public T read(String id) {
-        return null;
-    }
-
-    /**
-     * 更新数据
-     *
-     * @param id     主键信息
-     * @param object 更新对象
-     */
-
-    public void update(String id, T object) {
-
-    }
-
-    /**
-     * 删除数据
-     *
-     * @param id 主键信息
-     */
-
-    public void delete(String id) {
-
-    }
-
-    /**
-     * 软删除
-     *
-     * @param id 主键信息
-     */
-
-    public void deleteSoft(String id) {
-
-    }
-
 
 }

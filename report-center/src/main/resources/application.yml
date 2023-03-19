@@ -2,9 +2,11 @@ logging:
   config: classpath:logback.xml
 storage:
   strategy:
-    type: mongo
+    type: es
 
 spring:
   data:
     mongodb:
       uri: mongodb://test:test%3D123@192.168.1.200:27017/test?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=test&authMechanism=SCRAM-SHA-256&3t.uriVersion=3&3t.connection.name=test+of+ubuntu-mongo&3t.alwaysShowAuthDB=true&3t.alwaysShowDBFromUserRole=true
+  elasticsearch:
+    uris: http://192.168.1.200:9200

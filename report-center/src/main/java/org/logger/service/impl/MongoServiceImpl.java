@@ -5,13 +5,13 @@ import org.logger.service.MongoService;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.concurrent.ExecutorService;
 
 /**
  * @author TBH anglebanghua@gmail.com
  * Date: [2023/3/15 23:34]
- * Description:  MongoService implements
+ * Description:  mongob service implements
  */
 @Service
 public class MongoServiceImpl implements MongoService {
@@ -21,14 +21,14 @@ public class MongoServiceImpl implements MongoService {
         this.mongoTemplate = mongoTemplate;
     }
 
-    private final String poolName = "Mongo-STORAGE-POOL";
+    private final String poolName = "MONGO-STORAGE-POOL";
     private final ExecutorService executorService = ThreadPoolsUtil.getOrInitExecutors(poolName, 2 << 5);
 
     @Override
-    public <T> void saveBatch(List<T> loggerMessageList) {
+    public <T> void saveBatch(Collection<T> loggerMessageList) {
         executorService.submit(() -> {
             mongoTemplate.insertAll(loggerMessageList);
-            System.out.println("================> saveBatch");
         });
+        System.out.println("================>mongo save batch");
     }
 }
