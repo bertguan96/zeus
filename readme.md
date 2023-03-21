@@ -1,4 +1,4 @@
-# 基于Vue+Springboot日志监控组件[2023]
+# 基于Vue+Springboot日志监控系统[2023]
 ## TODO
 - [ ] 实现日志在线存储，支持MongoDB and Elastic Search
   - [x] 消息存储到MongoDB
@@ -13,11 +13,7 @@
 | 中间件     | 版本信息 |
 | :--: | ------ |
 | ElasticSearch | 7.17.3 |
-| MongoDB | 5.0 |
-
-
-
-[Spring Data ElasticSearch与ElasticSearch版本对照表](https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/)
+| MongoDB | 6.0 |
 
 ### 存储策略配置
 已支持策略：
@@ -35,3 +31,11 @@ storage:
   strategy:
     type: mongo
 ```
+
+## 参考资料
+
+1. [MongoDB文档](https://www.mongodb.com/docs/manual/tutorial/getting-started/)
+2. [Spring Data ElasticSearch版本对照信息](https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/)
+3. [Spring Data MongoDB版本对照信息](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#get-started:first-steps:spring)
+4. [Spring Data Elasticsearch 官方文档](https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/#reference)
+5. [Spring Data MongoDB 官方文档](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#reference)
