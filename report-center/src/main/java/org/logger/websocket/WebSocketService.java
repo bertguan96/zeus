@@ -1,15 +1,15 @@
 package org.logger.websocket;
 
 import com.alibaba.fastjson2.JSON;
-import jakarta.websocket.*;
-import jakarta.websocket.server.PathParam;
-import jakarta.websocket.server.ServerEndpoint;
 import org.logger.entity.LoggerMessage;
 import org.logger.entity.LoggerQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.websocket.*;
+import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.ExecutorService;
@@ -22,7 +22,7 @@ public class WebSocketService {
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;
     //concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
-    private static CopyOnWriteArraySet<WebSocketService> webSocketSet = new CopyOnWriteArraySet<WebSocketService>();
+    private static final CopyOnWriteArraySet<WebSocketService> webSocketSet = new CopyOnWriteArraySet<>();
 
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
@@ -73,8 +73,8 @@ public class WebSocketService {
     }
 
     /**
-     * @param session
-     * @param error
+     * @param session ws会话
+     * @param error 异常
      */
     @OnError
     public void onError(Session session, Throwable error) {
@@ -83,6 +83,8 @@ public class WebSocketService {
 
     /**
      * 实现服务器主动推送
+     * @param message
+     * @throws IOException
      */
     public void sendMessage(String message) throws IOException {
         this.session.getBasicRemote().sendText(message);
