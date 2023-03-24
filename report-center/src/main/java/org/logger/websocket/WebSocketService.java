@@ -102,7 +102,6 @@ public class WebSocketService {
                     item.sendMessage(message);
                 }
             } catch (IOException e) {
-                continue;
             }
         }
     }
