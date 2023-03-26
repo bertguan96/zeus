@@ -32,6 +32,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
+    implementation 'com.rabbitmq:amqp-client:5.11.0'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
 //    implementation 'org.slf4j:slf4j-api:2.0.6'
     implementation 'com.alibaba.fastjson2:fastjson2:2.0.24'
 
